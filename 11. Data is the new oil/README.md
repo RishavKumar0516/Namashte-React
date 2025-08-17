@@ -2,7 +2,7 @@
 
 Higher order component is a function that takes a component and returns a component.
 
-It takes the component as input and it enhances the component, adds some extra feature to that component and returns new component back.
+It takes the component as input and it enhances the component, adds some extra feature to that component and returns new component back.  
 
 
 on swiggy website you will see some of the resturant card has promoted label
