@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- <div style="background-color: red;">
+        <h2 class="heading2">Hi I am Rishav</h2>
+        <div class="content">
+            <p>I am from India</p>
+            <p>My age is 26</p>
+        </div> -->
+        lor
+
+    </div>
+
+    <!-- appending element using js -->
+    <!-- <script>
+        const heading = document.createElement('h1');
+
+        heading.innerHTML = 'Hello World';
+
+        const root = document.getElementById('root');
+
+        root.appendChild (heading);
+    </script> -->
+
+    <!-- appending element using react-->
+
+    <!-- React CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script>
+
+        const heading = React.createElement('h1', {
+            id: 'heading',
+            className: 'heading',
+            style: {
+                color: 'red',
+                background: 'blue'
+            }
+
+        }, 'Hello World'); //create react element
+        console.log("headign", heading);  //this react element is plain js object
+
+        const heading2 = React.createElement('h2', {
+            id: 'heading2',
+        }, 'Hi I am Rishav');
+
+        const p1 = React.createElement('p', null, 'I am from India');
+
+        const p2 = React.createElement('p', null, 'My age is 26');
+
+        const content = React.createElement('div', {
+            id: 'content',
+            className: 'content',
+        }, [p1, p2]);
+
+
+
+        
+        const container = React.createElement('div', {
+            id: 'container',
+            className: 'container',
+            style: {
+                color: 'red',
+                border: '1px solid black'
+            }
+        }, [heading2, content]);
+
+
+
+        const root = ReactDOM.createRoot(document.getElementById('root')); // to access the root element so that we can insert the react element in the DOM.
+
+        // passing the react element inside the root, render method takes the react element and insert it in the DOM
+        root.render([container, heading]); //we can pass multiple react elements in the render method in the form of array.
+    </script>
+    
+</body>
+</html>
+
+<!-- as we attach the react CDN in the file, it becomes the shortest program possible in react. -->
+ <!-- first script of react cdn gives us "React" and second script of react cdn gives us "ReactDOM" which we can use -->
+  <!-- React and ReactDOM are global variables -->
+  <!-- rect is used for browser, mobile(react native), web(react js), server(react js) etc. -->
+  <!-- second script is react dom, which is responsible for performing all dom operations -->
+
+  <!-- createElement takes 3 arguments
+  1 tag
+  2 attributes
+  3 children -->
+
+  <!-- can we have multiple root elements? -->
+   <!-- no we cannot have multiple root elements, we can have only one, our entire app will be in the root and we always have only
+    one render method -->
+
+
+    <!-- React came up with the idea of writting the html inside the javascript, as we have written above code using createElement.
+     but the code we have written above is not user friendly, as takes lot of time to write such code, that's why the JSX comes in the picture, In jsx
+     we can write html and javascript at the same time -->
