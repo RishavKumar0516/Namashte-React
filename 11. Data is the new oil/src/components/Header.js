@@ -1,21 +1,20 @@
 
 import { FaCartArrowDown } from "react-icons/fa";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatuse from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
+
 
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
 
   const onlineStatus = useOnlineStatuse();
-
-
-  // if no dependency array is passed, useEffect will be called on every render
-  // if dependency array is empty = [] => useEffect will be called on initial render(just once).
-  // if we pass dependency array with dependency = [btnNameReact] => useEffect will be called every time when dependency changes
-  // useEffect(()=>{
-  //   console.log("Header component re-rendered");
-  // }, [btnNameReact]);
+  
+  // react provide a hook called useContext to consume the context value
+  // const data = useContext(UserContext);
+  // or
+  const {loggedInUser} = useContext(UserContext);
 
 
   return (
@@ -44,6 +43,7 @@ const Header = () => {
             {btnNameReact}
           </button>
           </li>
+          <li className="px-4 font-bold">{loggedInUser}</li>
         </ul>
       </div>
     </div>

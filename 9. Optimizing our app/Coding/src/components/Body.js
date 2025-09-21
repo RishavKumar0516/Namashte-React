@@ -34,7 +34,6 @@ const Body = () => {
     setSearchText(value);
     console.log(value);
     const filteredRestaurant = resList.filter((res)=> res.info.name.toLowerCase().includes(value.toLowerCase()));
-    console.log("filteredRestaurant", filteredRestaurant);
     // setRestaurantList(filteredRestaurant);
   }
 

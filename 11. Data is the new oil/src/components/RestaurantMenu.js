@@ -1,45 +1,45 @@
-// import {useEffect, useState} from "react";
+import React, {useState} from "react";
 import resList from "../utils/mockData";
 import { useParams } from "react-router-dom";
 import { RestaurantMenuShimmer } from "./ShimmerUI";
 import useResturantMenu from "../utils/useResturantMenu";
 
+import resturantDetailData from "../utils/resturantDetailData";
+import Resturantcategory from "../components/ResturantCategory";
 
 const ResturantMenu = () => {
     // const [resturantData, setResturantData] = useState(null);
+   const [showItems, setShowItems] = useState(false);
+   const [showIndex, setShowIndex] = useState(0);
     const {resId} = useParams();
 
-    // inside the component we sould not worried about how this hook is fetching the data. we are trying to abstract the fetchdata logic and  put inside this hook. 
-    // now resturant menu is only concerned about how to display menu on to the ui.
-    // with using custom hook how to get the data is now abstracted.
-    // hooks are nothing but a helper/utility funtion so we put this hooks inside the seperate folder named utils/helper
-    // each custom hooks should be created in the seperate file, and name the file with exactly the same name of the hook.
-    // whenever creating the hook always start with the word "use" in smallcase. That will help react to understand that this is a hook
     const resInfo = useResturantMenu(resId);
-    // now after using the custom hook we can remove the useEffect hook and the fetchData function. Even we don't need to store the data in setResturantData state.
 
-    // the difference b/w the senior and junior developer is he writes code.
-    // don't only try to make the app working, your code should be clean, redable, light weight.
+let categories = resturantDetailData?.data?.cards[4]?.groupedCard?.cardGroupMap?.['REGULAR']?.cards || [];
+categories = categories.slice(1);
 
-    // Their is no issue if you write the api calling logic here but if you write it in the custom hooks, That makes much more sense and make it more testable, because right now if we have to test the fetching data logic or we have any issue with fetching the data then I just have to test the useResturantMenu hook.
+// remove the last element from the array
+    categories = categories.slice(0, categories.length - 2);
 
+    // remove the first element from the array
+   //  categories = categories.slice(1);
+
+    console.log("categories", categories);
 
     if(!resInfo) return <RestaurantMenuShimmer />
 
     const {name, cuisines, costForTwo} = resInfo?.info || {};
 
     return (
-       <div className="menu">
-           <h1>{name}</h1>
-           <p>
-            {cuisines?.join(", ")} - {costForTwo}
-           </p>
-           <h2>Menu</h2>
-           <ul>
-               <li>Biryani</li>
-               <li>Burgers</li>
-               <li>Diet Coke</li>
-           </ul>
+       <div>
+            <div className="max-w-[800px] min-h-[800px] mt-[20px] mb-0 mx-auto">
+                 <h1 className="font-bold fw-bolder text-3xl">{name}</h1>
+                 <p className="font-semibold">{cuisines?.join(", ")} - {costForTwo}</p>
+
+               {/* This is known as controlled component */}
+               {categories?.map((category, index) => <Resturantcategory key={category?.card?.card?.title} data={category?.card?.card} showItems={index === showIndex} handleClick={() => setShowIndex(index === showIndex ? -1 : index)} />)}
+
+            </div>
        </div>
    )
 }

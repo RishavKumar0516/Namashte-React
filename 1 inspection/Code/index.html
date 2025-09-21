@@ -36,6 +36,7 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 
     <script>
+        console.log("react", React);    
 
         const heading = React.createElement('h1', {
             id: 'heading',
@@ -75,8 +76,15 @@
 
 
 
+        //         That div#root is just a plain HTML element — an empty container.
+        
+        // React itself doesn’t automatically know how to “take over” that element.
+        
+        // To let React render inside that div, you must explicitly connect React to it. That’s what this line does:
         const root = ReactDOM.createRoot(document.getElementById('root')); // to access the root element so that we can insert the react element in the DOM.
 
+
+// to actually render your React component tree.
         // passing the react element inside the root, render method takes the react element and insert it in the DOM
         root.render([container, heading]); //we can pass multiple react elements in the render method in the form of array.
     </script>
