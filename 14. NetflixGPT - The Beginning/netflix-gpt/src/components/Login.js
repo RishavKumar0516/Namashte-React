@@ -22,7 +22,8 @@ const Login = () => {
             <input type="text" placeholder='Email Address' className='p-3 my-2 w-full bg-gray-700 rounded-md border-2 border-gray-500 focus:outline-2 focus:outline-white'/>
             <input type="password" placeholder='Password' className='p-3 my-2 w-full bg-gray-700 rounded-md border-2 border-gray-500 focus:border-2 focus:border-gray-500 focus:outline-1 focus:outline-white'/>
             <button className='p-2 my-2 w-full bg-red-600 rounded-md'>{isSignInForm ? "Sign In" : "Sign Up"}</button>
-            <p className='py-4 text-sm cursor-pointer' onClick={()=> toggleSignInForm()}>{isSignInForm ? "New to Netflix? Sign up now." : "Already registered? Sign In now."}</p>
+
+            {isSignInForm ? <p className='py-4 text-sm cursor-pointer' onClick={()=> toggleSignInForm()}>New to Netflix? <span className='text-red-600'>Sign up</span>&nbsp;now.</p> : <p className='py-4 text-sm cursor-pointer' onClick={()=> toggleSignInForm()}>Already registered? <span className='text-red-600'>Sign In</span>&nbsp; now.</p> }
         </form>
 
     </div>
