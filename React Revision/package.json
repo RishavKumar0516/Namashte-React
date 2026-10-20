@@ -1,0 +1,21 @@
+{
+  "name": "react-revision",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html"
+  },
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^6.30.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "parcel": "^2.16.4"
+  }
+}

@@ -25,7 +25,7 @@ If you handle your data layer very efficiently,  your application become very pe
 if you use the state for opening and closing the accordian inside the ResturantCategory then this state will get bind to each category and open and close the category based on actions
 
 but if you want that some functionality like
-when clicked on one accordian then all other should get closed so for this you need to liftt up the state
+when clicked on one accordian then all other should get closed so for this you need to lift up the state
 you need to define this inside the parent component of the ResturantCategory so then only all the category gets binded with one state.
 
 and this is called lifting of your state.
